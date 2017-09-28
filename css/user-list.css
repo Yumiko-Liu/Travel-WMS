@@ -1,0 +1,18 @@
+#userInfoModal .modal-body {
+  text-align: center;
+}
+#userInfoModal .modal-body .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}
+#userInfoModal .modal-body .form-control {
+  margin-top: 15px;
+}
+#userInfoModal .modal-body .status {
+  margin-top: 15px;
+  text-align: left;
+}
+#userInfoModal .modal-body .status label {
+  margin: 0 8px;
+}

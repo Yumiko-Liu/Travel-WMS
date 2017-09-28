@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Travel-WMS</title>
+    <meta charset="UTF-8">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header"></header>
+    <div class="nav">
+      <ul id="navList">
+        <script id="navListTemp" type="x-tmpl-mustache">
+          {{#nav}}
+            <li>
+              <div data-toggle="collapse" href="#{{class}}" aria-expanded="false" class="collapse-class">
+                {{class}}
+              </div>
+              <div class="collapse" id="{{class}}">
+                {{#item}}
+                  <div class="collapse-item" data-path="{{path}}">
+                    <i class="fa fa-caret-right"></i>
+                    {{name}}
+                  </div>
+                {{/item}}
+              </div>
+            </li>
+          {{/nav}}
+        </script>
+      </ul>
+    </div>
+    <div class="content">
+      <iframe src="./data/user-list.html" id="iframe"></iframe>
+    </div>
+  </body>
+  <script src="./js/libs/jquery-2.2.4.min.js"></script>
+  <script src="./js/core/popper.js"></script>
+  <script src="./js/core/bootstrap.min.js"></script>
+  <script src="./js/plugins/mustache.min.js"></script>
+  <script src="./js/views/common.js"></script>
+  <script src="./js/views/index.js"></script>
+</html>

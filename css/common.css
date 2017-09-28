@@ -1,0 +1,36 @@
+.page {
+  padding: 15px;
+}
+.page > header {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.toolbar {
+  margin-top: 15px;
+}
+.table {
+  margin-top: 15px
+}
+.btn {
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn i{
+  padding-right: 5px;
+}
+.table td, .table th {
+  padding: .5rem;
+}
+.table td.avatar img {
+  width: 25px;
+  height: 25px;
+}
+.table td.action i {
+  color: #428bca;
+  cursor: pointer;
+}
+.table td.action i:hover {
+  color: #2a6496;
+}
