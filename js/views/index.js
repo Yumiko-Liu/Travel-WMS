@@ -6,11 +6,14 @@
         "name": "用户列表",
         "path": "./data/user-list.html"
       }, {
-        "name": "item2",
-        "path": "http://www.163.com"
+        "name": "攻略列表",
+        "path": "./data/guide-notes-list.html"
       }, {
-        "name": "item3",
-        "path": "http://www.bing.com"
+        "name": "游记列表",
+        "path": "./data/travel-notes-list.html"
+      }, {
+        "name": "目的地列表",
+        "path": "./data/destination-list.html"
       }]
     }, {
       "class": "class2",
@@ -47,4 +50,5 @@
     }
     $(this).addClass("active");
   });
+
 }(window));

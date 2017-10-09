@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Travel-WMS</title>
+    <meta charset="UTF-8">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/zoom.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="page">
+      <header>目的地列表</header>
+      <div class="toolbar">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#userInfoModal"><i class="fa fa-plus"></i>添加目的地</button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">封面</th>
+            <th scope="col">中文名称</th>
+            <th scope="col">英文名称</th>
+            <th scope="col">所属地区</th>
+            <th scope="col">简介</th>
+            <th scope="col">状态</th>
+            <th scope="col">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              <img src="https://avatars2.githubusercontent.com/u/23022344?v=4&s=400&u=0654dfadb1b282f430d432d7502b9dea8e740298" data-action="zoom" />
+            </td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td class="action">
+              <i class="fa fa-eye" title="预览"></i>
+              <i class="fa fa-pencil" title="修改"></i>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@mdo</td>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td class="action">
+              <i class="fa fa-eye" title="预览"></i>
+              <i class="fa fa-pencil" title="修改"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </body>
+  <script src="../js/libs/jquery-2.2.4.min.js"></script>
+  <script src="../js/core/popper.js"></script>
+  <script src="../js/core/bootstrap.min.js"></script>
+  <script src="../js/plugins/mustache.min.js"></script>
+  <script src="../js/plugins/zoom.js"></script>
+  <script src="../js/views/common.js"></script>
+</html>
