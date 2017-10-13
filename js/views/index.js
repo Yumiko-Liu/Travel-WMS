@@ -16,10 +16,10 @@
         "path": "./data/destination-list.html"
       }]
     }, {
-      "class": "class2",
+      "class": "设置",
       "item": [{
-        "name": "item1",
-        "path": "http://www.apple.com"
+        "name": "主页焦点图",
+        "path": "./setting/index-carousel.html"
       }, {
         "name": "item2",
         "path": "http://www.apple.com"
