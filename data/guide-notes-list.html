@@ -7,7 +7,7 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/zoom.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
-    <link href="../css/guide-notes-list.css" rel="stylesheet">
+    <link href="../css/notes-list.css" rel="stylesheet">
   </head>
   <body>
     <div class="page">
@@ -64,16 +64,26 @@
       </table>
       
       <!-- Modal -->
-      <div class="modal fade" id="addGuideModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+      <div class="modal fade bd-example-modal-lg" id="addGuideModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">添加攻略</h5>
             </div>
+            <div class="add-cover">
+              <div class="overlay">
+                <i class="fa fa-plus"></i>
+                <span>更改封面</span>
+              </div>
+              <img src="https://p1-q.mafengwo.net/s9/M00/4D/12/wKgBs1e0VXqAGmV4AA5SJeYGjAs00.jpeg?imageMogr2%2Fthumbnail%2F%21690x276r%2Fgravity%2FCenter%2Fcrop%2F%21690x276%2Fquality%2F100" />
+              <input type="file" id="coverIMG" hidden />
+            </div>
             <div class="modal-body">
-              <input type="text" class="form-control" placeholder="用户名" />
-              <input type="text" class="form-control" placeholder="密码" />
-              
+              <input type="text" class="form-control" placeholder="标题" />
+              <input type="text" class="form-control" placeholder="城市" />
+              <div id="editor">
+                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
@@ -89,5 +99,8 @@
   <script src="../js/core/bootstrap.min.js"></script>
   <script src="../js/plugins/mustache.min.js"></script>
   <script src="../js/plugins/zoom.js"></script>
+  <script src="../js/plugins/wangEditor.min.js"></script>
+  <script src="../js/plugins/jquery.form.js"></script>
   <script src="../js/views/common.js"></script>
+  <script src="../js/views/guide-notes-list.js"></script>
 </html>
