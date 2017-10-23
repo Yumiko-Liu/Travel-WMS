@@ -22,7 +22,7 @@
   -o-transition: all .4s;
 }
 #addGuideModal .add-cover .overlay:hover {
-  background: rgba(3, 102, 214, 0.9);
+  background: rgba(0, 123, 255, 0.8);
   color: #fff;
   font-size: 20px;
 }

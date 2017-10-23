@@ -39,7 +39,7 @@
     }]
   };
 
-  renderer("navListTemp", navList, "navList");
+  Common.renderer("navListTemp", navList, "navList");
 
   // 页面切换
   $(".collapse-item").on("click", function() {

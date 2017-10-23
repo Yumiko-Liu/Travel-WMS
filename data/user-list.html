@@ -58,31 +58,34 @@
               <h5 class="modal-title">用户信息</h5>
             </div>
             <div class="modal-body">
-              <img src="https://avatars2.githubusercontent.com/u/23022344?v=4&s=400&u=0654dfadb1b282f430d432d7502b9dea8e740298" class="avatar" />
-
-              <!-- <input type="file" class="btn btn-warning" value="修改头像" name="uploadfile" id="file1"/> -->
-              
-              <input type="text" class="form-control" placeholder="用户名" />
-              <input type="text" class="form-control" placeholder="密码" />
+              <div class="add-avatar">
+                <div class="overlay">
+                  <i class="fa fa-upload"></i>
+                </div>
+                <img src="../images/avatar.jpg" id="avatar" />
+              </div>
+              <input type="file" id="upload-avatar" hidden />
+              <input type="text" class="form-control" placeholder="用户名" id="username" />
+              <input type="text" class="form-control" placeholder="密码" id="password" />
               <div class="status">
                 <span>用户状态：</span>
                 <label>
-                  <input type="radio" name="status" />
+                  <input type="radio" name="status" class="userStatus" checked />
                   <span>活动的</span>
                 </label>
                 <label>
-                  <input type="radio" name="status" />
+                  <input type="radio" name="status" class="userStatus" />
                   <span>禁用</span>
                 </label>
                 <label>
-                  <input type="radio" name="status" />
+                  <input type="radio" name="status" class="userStatus" />
                   <span>已删除</span>
                 </label>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary">保存</button>
+              <button type="button" class="btn btn-primary" id="saveUser">保存</button>
             </div>
           </div>
         </div>

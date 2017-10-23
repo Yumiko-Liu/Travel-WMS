@@ -16,6 +16,9 @@
   }
   editor.create();
 
+  $(".add-cover .overlay").on("click", function() {
+    $("#coverIMG").click();
+  });
   var filenode = document.getElementById("coverIMG");  
   $("#coverIMG").on("change", function() {
     var formData = new FormData();
@@ -23,22 +26,22 @@
     $.ajax({
       url: 'http://localhost:3000/uploadImg',
       type: 'POST',
-      data: formData,//<----要传输的数据
+      data: formData, //<----要传输的数据
       async: false,
       cache: false,
-      timeout:100,
-      contentType: false,//<----头信息设置为false
+      timeout: 100,
+      contentType: false, //<----头信息设置为false
       processData: false,
-      success: function(data){
-          if(data.errno === 0){
-              alert("文件上传成功");
-          }else if(data.result === 'fail'){
-              alert('文件上传失败：原因是' + data.reason);
-          }
+      success: function(data) {
+        if (data.errno === 0) {
+          $(".add-cover img").attr("src", data.url[0]);
+        } else {
+          alert('文件上传失败');
+        }
       },
       error: function(xhr){
-          alert('文件上传失败：原因是' + xhr.status);
+        alert('文件上传失败：原因是' + xhr.status);
       }
-    });//end ajax
+    });
   });
 }(jQuery));

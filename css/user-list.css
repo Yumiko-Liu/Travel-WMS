@@ -1,10 +1,36 @@
 #userInfoModal .modal-body {
   text-align: center;
 }
-#userInfoModal .modal-body .avatar {
+#userInfoModal .modal-body .add-avatar {
+  margin: 0 auto;
   width: 80px;
   height: 80px;
-  border-radius: 5px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+#userInfoModal .modal-body .add-avatar .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 80px;
+  color: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transition: all .4s;
+  -moz-transition: all .4s;
+  -webkit-transition: all .4s;
+  -o-transition: all .4s;
+}
+#userInfoModal .modal-body .add-avatar .overlay:hover {
+  background: rgba(0, 123, 255, 0.8);
+  color: rgba(255, 255, 255, 1);
+}
+#userInfoModal .modal-body .add-avatar img {
+  width: 100%;
+  height: 100%;
 }
 #userInfoModal .modal-body .form-control {
   margin-top: 15px;
