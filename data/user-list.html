@@ -13,7 +13,7 @@
     <div class="page">
       <header>用户列表</header>
       <div class="toolbar">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#userInfoModal"><i class="fa fa-plus"></i>添加用户</button>
+        <button type="button" class="btn btn-dark" onclick="openUserModal(this, 1)"><i class="fa fa-plus"></i>添加用户</button>
       </div>
       <table class="table">
         <thead>
@@ -36,13 +36,13 @@
                 <td class="avatar">
                   <img src="{{avatar}}" data-action="zoom" />
                 </td>
-                <td>{{username}}</td>
-                <td>{{password}}</td>
+                <td class="username">{{username}}</td>
+                <td class="password">{{password}}</td>
                 <td>{{notes_num}}</td>
                 <td>{{fans_num}}</td>
                 <td>{{status}}</td>
                 <td class="action">
-                  <i class="fa fa-pencil" title="修改"></i>
+                  <i class="fa fa-pencil" data-id={{id}} title="修改" onclick="openUserModal(this, 2)"></i>
                 </td>
               </tr>
             {{/data}}
