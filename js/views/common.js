@@ -4,9 +4,26 @@ var Common = {
   // 模板渲染
   renderer: function(templateID, data, targetID) {
     var template = $("#" + templateID).html();
+    data.time = function() {
+      return Common.timeFormat(this.pubtime);
+    }
     Mustache.parse(template);   // optional, speeds up future uses
     var rendered = Mustache.render(template, data);
     $("#" + targetID).html(rendered);
+  },
+
+  timeFormat: function(date) {
+    var d = new Date(+date);
+    var year = d.getFullYear();
+    var month = tidy(d.getMonth() + 1);
+    var date = tidy(d.getDate());
+    var hour = tidy(d.getHours());
+    var minute = tidy(d.getMinutes());
+    // 时间补零
+    function tidy(time) {
+      return time.toString().length == 1 ? "0" + time: time;
+    }
+    return year + '-' + month + '-' + date + ' ' + hour + ':' + minute;
   },
 
   ajax: function(_interface, _param, callback) {

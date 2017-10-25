@@ -1,4 +1,9 @@
 (function($) {
+
+  Common.ajax("getGuideNotes", null, function(data) {
+    Common.renderer("guideNotesListTemp", data, "guideNotesList");
+  });
+
   var editor = new wangEditor('#editor');
   editor.customConfig.uploadImgServer = 'http://localhost:3000/uploadImg';
   editor.customConfig.uploadImgHooks = {
@@ -19,29 +24,43 @@
   $(".add-cover .overlay").on("click", function() {
     $("#coverIMG").click();
   });
-  var filenode = document.getElementById("coverIMG");  
   $("#coverIMG").on("change", function() {
-    var formData = new FormData();
-    formData.append("file", filenode.files[0]);
-    $.ajax({
-      url: 'http://localhost:3000/uploadImg',
-      type: 'POST',
-      data: formData, //<----要传输的数据
-      async: false,
-      cache: false,
-      timeout: 100,
-      contentType: false, //<----头信息设置为false
-      processData: false,
-      success: function(data) {
-        if (data.errno === 0) {
-          $(".add-cover img").attr("src", data.url[0]);
-        } else {
-          alert('文件上传失败');
-        }
-      },
-      error: function(xhr){
-        alert('文件上传失败：原因是' + xhr.status);
+    Common.uploadIMG("coverIMG", function(data) {
+      $(".add-cover img").attr("src", data.url[0]);
+    });
+  });
+
+  $(".saveBtn").on("click", function() {
+    var notesStatus = document.querySelectorAll(".notesStatus");
+    var timestamp = Date.parse(new Date());
+    var params = {};
+    for (var i = 0; i < notesStatus.length; i++) {
+      if (notesStatus[i].checked) {
+        params.status = i;
+        break;
+      }
+    }
+    params.title = $("#title").val();
+    params.cover = $("#cover").attr("src");
+    params.pubtime = timestamp;
+    params.city = $("#city").val();
+    params.content = editor.txt.html();
+    Common.ajax("addGuideNotes", params, function(data) {
+      if (data.data.result === 1) {
+        location.reload();
       }
     });
   });
+
 }(jQuery));
+
+var preview = function(_this) {
+  Common.ajax("getGuideNotes", {"id": _this.getAttribute("data-id")}, function(data) {
+    $(".preview-cover img").attr("src", data.data[0].cover);
+    $(".preview-title").html(data.data[0].title);
+    $(".preview-city").html(data.data[0].city);
+    $(".preview-pubtime").html(Common.timeFormat(data.data[0].pubtime));
+    $(".preview-content").html(data.data[0].content);
+    $(".previewModal").modal();
+  });
+}
