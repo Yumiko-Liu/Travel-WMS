@@ -7,12 +7,13 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/zoom.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/destination-list.css" rel="stylesheet">
   </head>
   <body>
     <div class="page">
       <header>目的地列表</header>
       <div class="toolbar">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#userInfoModal"><i class="fa fa-plus"></i>添加目的地</button>
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".destinationModal"><i class="fa fa-plus"></i>添加目的地</button>
       </div>
       <table class="table">
         <thead>
@@ -39,7 +40,6 @@
             <td>Otto</td>
             <td>@mdo</td>
             <td class="action">
-              <i class="fa fa-eye" title="预览"></i>
               <i class="fa fa-pencil" title="修改"></i>
             </td>
           </tr>
@@ -52,13 +52,42 @@
             <td>Mark</td>
             <td>Otto</td>
             <td class="action">
-              <i class="fa fa-eye" title="预览"></i>
               <i class="fa fa-pencil" title="修改"></i>
             </td>
           </tr>
         </tbody>
       </table>
-      
+
+      <div class="modal fade destinationModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">添加目的地</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="add-cover">
+                <div class="overlay">
+                  <i class="fa fa-plus"></i>
+                  <span>更改封面</span>
+                </div>
+                <img src="../images/avatar.jpg" id="cover" />
+                <input type="file" id="coverIMG" hidden />
+              </div>
+              <input type="text" class="form-control" placeholder="中文名称" />
+              <input type="text" class="form-control" placeholder="英文名称" />
+              <input type="text" class="form-control" placeholder="所属地区" />
+              <textarea class="form-control" placeholder="简介"></textarea>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary saveBtn">保存</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="../js/libs/jquery-2.2.4.min.js"></script>
@@ -67,4 +96,5 @@
   <script src="../js/plugins/mustache.min.js"></script>
   <script src="../js/plugins/zoom.js"></script>
   <script src="../js/views/common.js"></script>
+  <script src="../js/views/destination-list.js"></script>
 </html>

@@ -1,11 +1,11 @@
 (function($) {
 
-  // 表格数据渲染
-  Common.ajax("getGuideNotes", null, function(data) {
-    Common.renderer("guideNotesListTemp", data, "guideNotesList");
-  });
+    // 表格数据渲染
+    Common.ajax("getTravelNotes", null, function(data) {
+      Common.renderer("travelNotesListTemp", data, "travelNotesList");
+    });
 
-  // 封面图片上传
+    // 封面图片上传
   $(".add-cover .overlay").on("click", function() {
     $("#coverIMG").click();
   });
@@ -39,6 +39,7 @@ editor.create();
 var modalInit = function() {
   $("#cover").attr("src", "http://via.placeholder.com/800x300?text=cover");
   $("#title").val('');
+  $("#author").val('');
   $("#city").val('');
   editor.txt.html('');
   document.querySelectorAll(".notesStatus")[1].checked = true;
@@ -55,6 +56,7 @@ var getModalVal = function(callback) {
     }
   }
   params.title = $("#title").val();
+  params.author = $("#author").val();
   params.cover = $("#cover").attr("src");
   params.pubtime = timestamp;
   params.city = $("#city").val();
@@ -69,7 +71,7 @@ var openNotesModal = function(_this, type) {
   if (type === 1) {
     $(".saveBtn").on("click", function() {
       getModalVal(function(val) {
-        Common.ajax("addGuideNotes", val, function(data) {
+        Common.ajax("addTravelNotes", val, function(data) {
           if (data.data.result === 1) {
             location.reload();
           }
@@ -78,9 +80,10 @@ var openNotesModal = function(_this, type) {
     });
   } else if (type === 2) {
     var id = _this.getAttribute("data-id");
-    Common.ajax("getGuideNotes", {"id": id}, function(data) {
+    Common.ajax("getTravelNotes", {"id": id}, function(data) {
       $("#cover").attr("src", data.data[0].cover);
       $("#title").val(data.data[0].title);
+      $("#author").val(data.data[0].author);
       $("#city").val(data.data[0].city);
       editor.txt.html(data.data[0].content);
       document.querySelectorAll(".notesStatus")[data.data[0].status].checked = true;
@@ -89,7 +92,7 @@ var openNotesModal = function(_this, type) {
     $(".saveBtn").on("click", function() {
       getModalVal(function(val) {
         val.id = id;
-        Common.ajax("modifyGuideNotes", val, function(data) {
+        Common.ajax("modifyTravelNotes", val, function(data) {
           if (data.data.result === 1) {
             location.reload();
           }
@@ -100,7 +103,7 @@ var openNotesModal = function(_this, type) {
 }
 
 var preview = function(_this) {
-  Common.ajax("getGuideNotes", {"id": _this.getAttribute("data-id")}, function(data) {
+  Common.ajax("getTravelNotes", {"id": _this.getAttribute("data-id")}, function(data) {
     $(".preview-cover img").attr("src", data.data[0].cover);
     $(".preview-title").html(data.data[0].title);
     $(".preview-city").html(data.data[0].city);

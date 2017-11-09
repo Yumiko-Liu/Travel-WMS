@@ -13,7 +13,7 @@
     <div class="page">
       <header>攻略列表</header>
       <div class="toolbar">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".notesModal"><i class="fa fa-plus"></i>添加攻略</button>
+        <button type="button" class="btn btn-dark" onclick="openNotesModal(this, 1)"><i class="fa fa-plus"></i>添加攻略</button>
       </div>
       <table class="table">
         <thead>
@@ -45,7 +45,7 @@
                 <td>{{status}}</td>
                 <td class="action">
                   <i class="fa fa-eye" title="预览" data-id={{id}} onclick="preview(this)"></i>
-                  <i class="fa fa-pencil" title="修改"></i>
+                  <i class="fa fa-pencil" title="修改" data-id={{id}} onclick="openNotesModal(this, 2)"></i>
                 </td>
               </tr>
             {{/data}}
@@ -65,7 +65,7 @@
                 <i class="fa fa-plus"></i>
                 <span>更改封面</span>
               </div>
-              <img src="https://p1-q.mafengwo.net/s9/M00/4D/12/wKgBs1e0VXqAGmV4AA5SJeYGjAs00.jpeg?imageMogr2%2Fthumbnail%2F%21690x276r%2Fgravity%2FCenter%2Fcrop%2F%21690x276%2Fquality%2F100" id="cover" />
+              <img src="http://via.placeholder.com/800x300?text=cover" id="cover" />
               <input type="file" id="coverIMG" hidden />
             </div>
             <div class="modal-body">
@@ -124,7 +124,6 @@
   <script src="../js/plugins/mustache.min.js"></script>
   <script src="../js/plugins/zoom.js"></script>
   <script src="../js/plugins/wangEditor.min.js"></script>
-  <script src="../js/plugins/jquery.form.js"></script>
   <script src="../js/views/common.js"></script>
   <script src="../js/views/guide-notes-list.js"></script>
 </html>

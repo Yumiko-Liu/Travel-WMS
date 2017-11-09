@@ -16,6 +16,7 @@
   
 }(jQuery));
 
+// 初始化modal
 var modalInit = function() {
   $("#avatar").attr("src", "../images/avatar.jpg");
   $("#username").val('');

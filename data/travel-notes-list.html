@@ -7,12 +7,13 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/zoom.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/notes-list.css" rel="stylesheet">
   </head>
   <body>
     <div class="page">
       <header>游记列表</header>
       <div class="toolbar">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#userInfoModal"><i class="fa fa-plus"></i>添加游记</button>
+        <button type="button" class="btn btn-dark" onclick="openNotesModal(this, 1)"><i class="fa fa-plus"></i>添加游记</button>
       </div>
       <table class="table">
         <thead>
@@ -29,71 +30,90 @@
             <th scope="col">操作</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>
-              <img src="https://avatars2.githubusercontent.com/u/23022344?v=4&s=400&u=0654dfadb1b282f430d432d7502b9dea8e740298" data-action="zoom" />
-            </td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td class="action">
-              <i class="fa fa-eye" title="预览"></i>
-              <i class="fa fa-pencil" title="修改"></i>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td class="action">
-              <i class="fa fa-eye" title="预览"></i>
-              <i class="fa fa-pencil" title="修改"></i>
-            </td>
-          </tr>
+        <tbody id="travelNotesList">
+          <script id="travelNotesListTemp" type="x-tmpl-mustache">
+            {{#data}}
+              <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{title}}</td>
+                <td>
+                  <img src="{{cover}}" data-action="zoom" />
+                </td>
+                <td>{{author}}</td>
+                <td>{{time}}</td>
+                <td>{{page_view}}</td>
+                <td>{{like_num}}</td>
+                <td>{{city}}</td>
+                <td>{{status}}</td>
+                <td class="action">
+                  <i class="fa fa-eye" title="预览" data-id={{id}} onclick="preview(this)"></i>
+                  <i class="fa fa-pencil" title="修改" data-id={{id}} onclick="openNotesModal(this, 2)"></i>
+                </td>
+              </tr>
+            {{/data}}
+          </script>
         </tbody>
       </table>
       
       <!-- Modal -->
-      <div class="modal fade" id="userInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+      <div class="modal fade bd-example-modal-lg notesModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">用户信息</h5>
+              <h5 class="modal-title">添加攻略</h5>
+            </div>
+            <div class="add-cover">
+              <div class="overlay">
+                <i class="fa fa-plus"></i>
+                <span>更改封面</span>
+              </div>
+              <img src="http://via.placeholder.com/800x300?text=cover" id="cover" />
+              <input type="file" id="coverIMG" hidden />
             </div>
             <div class="modal-body">
-              <img src="https://avatars2.githubusercontent.com/u/23022344?v=4&s=400&u=0654dfadb1b282f430d432d7502b9dea8e740298" class="avatar" />
-              <button type="button" class="btn btn-warning">修改头像</button>
-              <input type="text" class="form-control" placeholder="用户名" />
-              <input type="text" class="form-control" placeholder="密码" />
+              <input type="text" class="form-control" placeholder="标题" id="title" />
+              <input type="text" class="form-control" placeholder="作者" id="author" />
+              <input type="text" class="form-control" placeholder="城市" id="city" />
+              <div id="editor"></div>
               <div class="status">
-                <span>用户状态：</span>
+                <span>状态：</span>
                 <label>
-                  <input type="radio" name="status" />
-                  <span>活动的</span>
+                  <input type="radio" name="status" class="notesStatus" />
+                  <span>隐藏</span>
                 </label>
                 <label>
-                  <input type="radio" name="status" />
-                  <span>禁用</span>
-                </label>
-                <label>
-                  <input type="radio" name="status" />
-                  <span>已删除</span>
+                  <input type="radio" name="status" class="notesStatus" checked />
+                  <span>显示</span>
                 </label>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary">保存</button>
+              <button type="button" class="btn btn-primary saveBtn">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade bd-example-modal-lg previewModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">预览</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="preview-cover">
+                <img src="" />
+              </div>
+              <div class="preview-title"></div>
+              <div class="preview-meta">
+                <span class="preview-pubtime"></span>
+                <span class="preview-city"></span>
+              </div>
+              <div class="preview-content"></div>
             </div>
           </div>
         </div>
@@ -105,5 +125,7 @@
   <script src="../js/core/bootstrap.min.js"></script>
   <script src="../js/plugins/mustache.min.js"></script>
   <script src="../js/plugins/zoom.js"></script>
+  <script src="../js/plugins/wangEditor.min.js"></script>
   <script src="../js/views/common.js"></script>
+  <script src="../js/views/travel-notes-list.js"></script>
 </html>
