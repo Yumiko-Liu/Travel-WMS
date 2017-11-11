@@ -13,7 +13,7 @@
     <div class="page">
       <header>目的地列表</header>
       <div class="toolbar">
-        <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".destinationModal"><i class="fa fa-plus"></i>添加目的地</button>
+        <button type="button" class="btn btn-dark" onclick="openModal(this, 1)"><i class="fa fa-plus"></i>添加目的地</button>
       </div>
       <table class="table">
         <thead>
@@ -28,33 +28,25 @@
             <th scope="col">操作</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>
-              <img src="https://avatars2.githubusercontent.com/u/23022344?v=4&s=400&u=0654dfadb1b282f430d432d7502b9dea8e740298" data-action="zoom" />
-            </td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td class="action">
-              <i class="fa fa-pencil" title="修改"></i>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td class="action">
-              <i class="fa fa-pencil" title="修改"></i>
-            </td>
-          </tr>
+        <tbody id="destinationList">
+          <script id="destinationListTemp" type="x-tmpl-mustache">
+            {{#data}}
+              <tr>
+                <th scope="col">{{id}}</th>
+                <td>
+                  <img src="{{cover}}" data-action="zoom" />
+                </td>
+                <td>{{name_zh}}</td>
+                <td>{{name_en}}</td>
+                <td>{{region}}</td>
+                <td>{{description}}</td>
+                <td>{{status}}</td>
+                <td class="action">
+                  <i class="fa fa-pencil" title="修改" data-id={{id}} onclick="openModal(this, 2)"></i>
+                </td>
+              </tr>
+            {{/data}}
+          </script>
         </tbody>
       </table>
 
@@ -76,10 +68,21 @@
                 <img src="../images/avatar.jpg" id="cover" />
                 <input type="file" id="coverIMG" hidden />
               </div>
-              <input type="text" class="form-control" placeholder="中文名称" />
-              <input type="text" class="form-control" placeholder="英文名称" />
-              <input type="text" class="form-control" placeholder="所属地区" />
-              <textarea class="form-control" placeholder="简介"></textarea>
+              <input type="text" class="form-control" placeholder="中文名称" id="name_zh" />
+              <input type="text" class="form-control" placeholder="英文名称" id="name_en" />
+              <input type="text" class="form-control" placeholder="所属地区" id="region" />
+              <textarea class="form-control" placeholder="简介" id="description"></textarea>
+              <div class="status">
+                <span>状态：</span>
+                <label>
+                  <input type="radio" name="status" class="destinationStatus" />
+                  <span>隐藏</span>
+                </label>
+                <label>
+                  <input type="radio" name="status" class="destinationStatus" checked />
+                  <span>显示</span>
+                </label>
+              </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                 <button type="button" class="btn btn-primary saveBtn">保存</button>
