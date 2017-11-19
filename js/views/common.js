@@ -1,5 +1,9 @@
 var INTERFACE_URL = "http://localhost:3000/";
 
+if (window.location.href.indexOf("47.52.150.216") !== -1) {
+  INTERFACE_URL = "http://47.52.150.216/";
+}
+
 var Common = {
   // 模板渲染
   renderer: function(templateID, data, targetID) {

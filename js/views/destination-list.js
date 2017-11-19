@@ -48,7 +48,7 @@ var openModal = function(_this, type) {
   $(".destinationModal").modal();
   modalInit();
   if (type === 1) {
-    $(".saveBtn").on("click", function() {
+    document.querySelector(".saveBtn").onclick = function() {
       getModalVal(function(val) {
         Common.ajax("addDestination", val, function(data) {
           if (data.data.result === 1) {
@@ -56,7 +56,7 @@ var openModal = function(_this, type) {
           }
         });
       });
-    });
+    };
   } else if (type === 2) {
     var id = _this.getAttribute("data-id");
     Common.ajax("getDestination", {"id": id}, function(data) {
@@ -68,7 +68,7 @@ var openModal = function(_this, type) {
       document.querySelectorAll(".destinationStatus")[data.data[0].status].checked = true;
     });
 
-    $(".saveBtn").on("click", function() {
+    document.querySelector(".saveBtn").onclick = function() {
       getModalVal(function(val) {
         val.id = id;
         Common.ajax("modifyDestination", val, function(data) {
@@ -77,6 +77,6 @@ var openModal = function(_this, type) {
           }
         });
       });
-    });
+    };
   }
 }

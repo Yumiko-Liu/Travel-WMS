@@ -69,7 +69,7 @@ var openNotesModal = function(_this, type) {
   modalInit();
   $(".notesModal").modal();
   if (type === 1) {
-    $(".saveBtn").on("click", function() {
+    document.querySelector(".saveBtn").onclick = function() {
       getModalVal(function(val) {
         Common.ajax("addTravelNotes", val, function(data) {
           if (data.data.result === 1) {
@@ -77,7 +77,7 @@ var openNotesModal = function(_this, type) {
           }
         });
       });
-    });
+    };
   } else if (type === 2) {
     var id = _this.getAttribute("data-id");
     Common.ajax("getTravelNotes", {"id": id}, function(data) {
@@ -89,7 +89,7 @@ var openNotesModal = function(_this, type) {
       document.querySelectorAll(".notesStatus")[data.data[0].status].checked = true;
     });
 
-    $(".saveBtn").on("click", function() {
+    document.querySelector(".saveBtn").onclick = function() {
       getModalVal(function(val) {
         val.id = id;
         Common.ajax("modifyTravelNotes", val, function(data) {
@@ -98,7 +98,7 @@ var openNotesModal = function(_this, type) {
           }
         });
       });
-    });
+    };
   }
 }
 

@@ -43,7 +43,7 @@ var getModalVal = function(callback) {
 var openUserModal = function(_this, type) {
   modalInit();
   if (type === 1) {
-    $("#saveUser").on("click", function() {
+    document.getElementById("saveUser").onclick = function() {
       getModalVal(function(val) {
         Common.ajax("addUser", val, function(data) {
           if (data.data.result === 1) {
@@ -51,7 +51,7 @@ var openUserModal = function(_this, type) {
           }
         });
       });
-    });
+    };
   } else if (type === 2) {
     var id = _this.getAttribute("data-id");
     Common.ajax("getUser", {"id": id}, function(data) {
@@ -61,7 +61,7 @@ var openUserModal = function(_this, type) {
       document.querySelectorAll(".userStatus")[data.data[0].status - 1].checked = true;
     });
 
-    $("#saveUser").on("click", function() {
+    document.getElementById("saveUser").onclick = function() {
       getModalVal(function(val) {
         val.id = id;
         Common.ajax("modifyUser", val, function(data) {
@@ -70,7 +70,7 @@ var openUserModal = function(_this, type) {
           }
         });
       });
-    });
+    }
   }
   $("#userInfoModal").modal();
 }
