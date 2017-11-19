@@ -19,7 +19,7 @@
 
 // 创建文本编辑器
 var editor = new wangEditor('#editor');
-editor.customConfig.uploadImgServer = 'http://localhost:3000/uploadImg';
+editor.customConfig.uploadImgServer = INTERFACE_URL + 'uploadImg';
 editor.customConfig.uploadImgHooks = {
   customInsert: function (insertImg, result, editor) {
     // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
