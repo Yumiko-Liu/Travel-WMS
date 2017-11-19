@@ -20,21 +20,6 @@
       "item": [{
         "name": "主页焦点图",
         "path": "./setting/index-carousel.html"
-      }, {
-        "name": "item2",
-        "path": "http://www.apple.com"
-      }]
-    }, {
-      "class": "class3",
-      "item": [{
-        "name": "item1",
-        "path": "http://www.apple.com"
-      }, {
-        "name": "item2",
-        "path": "http://www.apple.com"
-      }, {
-        "name": "item3",
-        "path": "http://www.apple.com"
       }]
     }]
   };

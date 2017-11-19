@@ -1,7 +1,7 @@
 var INTERFACE_URL = "http://localhost:3000/";
 
 if (window.location.href.indexOf("47.52.150.216") !== -1) {
-  INTERFACE_URL = "http://47.52.150.216/";
+  INTERFACE_URL = "http://47.52.150.216:3000/";
 }
 
 var Common = {
