@@ -11,6 +11,14 @@ html, body {
   height: 50px;
   z-index: 9;
 }
+.header .logout {
+  line-height: 50px;
+  font-size: 16px;
+  color: #fff;
+  padding: 0 15px;
+  cursor: pointer;
+  display: none;
+}
 .nav {
   position: absolute;
   padding-top: 50px;
